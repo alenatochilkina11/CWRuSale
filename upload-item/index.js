@@ -3,8 +3,8 @@ const fetch = require('node-fetch'); // use to make requests
 const CosmosClient = require("@azure/cosmos").CosmosClient;
 
 const config = {
-    endpoint: process.env.ENTRY_COSMOS_ENDPOINT,
-    key: process.env.ENTRY_COSMOS_KEY,
+    endpoint: process.env.COSMOS_ENDPOINT,
+    key: process.env.COSMOS_KEY,
     databaseId: "cwru-sale",
     containerId: "uploaded-items",
     partitionKey: {kind: "Hash", paths: ["/items"]}

@@ -1,7 +1,7 @@
 {
   "name": "cwrusale",
   "version": "1.0.0",
-  "description": "",
+  "description": "CSDS 393",
   "scripts": {
     "start": "func start",
     "test": "echo \"No tests yet...\""
@@ -11,5 +11,17 @@
     "node-fetch": "^3.0.0",
     "query-string": "^7.0.1"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alenatochilkina11/CWRuSale.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alenatochilkina11/CWRuSale/issues"
+  },
+  "homepage": "https://github.com/alenatochilkina11/CWRuSale#readme"
 }
