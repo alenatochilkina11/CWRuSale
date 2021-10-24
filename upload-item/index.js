@@ -1,5 +1,3 @@
-const querystring = require('querystring');
-const fetch = require('node-fetch'); // use to make requests 
 const CosmosClient = require("@azure/cosmos").CosmosClient;
 
 const config = {
@@ -13,46 +11,29 @@ const config = {
 module.exports = async function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
 
-    // get info from params
+    //const name = (req.query.name || (req.body && req.body.name));
     let name = req.query.name
     let email = req.query.email
 
-    // create a new array with the info
-    let newEntryArray = [name, email]
-    context.log(newEntryArray)
+    let newItemInfo = [name, email]
 
     let newMessage = {
-        message : newEntryArray
+        message : newItemInfo
         }
-    context.log(newMessage)
-    //context.log("newMessage: " + newMessage) // TESTING
 
-    let items = await createDocument(newMessage);
-    //let [num_matches, map] = await findMatches(items, offendername)
+    let entries = await createDocument(newMessage);
 
-    const responseMessage = `Thank you, ${items[items.length-1].message[0]}.`// We found ${num_matches} matches // 6 was random_value
-    
+    const responseMessage = name
+        ? "Hello, " + name + ", " + email + ". This HTTP triggered function executed successfully."
+        : "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.";
+
     context.res = {
+        // status: 200, /* Defaults to 200 */
         body: responseMessage
-     };
+    };
 }
 
-async function findMatches(items, offendername){
-    var num_matches = -1;
-    const matchmap = new Map();
-    var index = 0;
-
-    for (let i = 0; i < items.length; i++) {
-        if (items[i].message[2] ==  offendername){
-            num_matches =  num_matches+1;
-            matchmap.set(index, items[i]);
-            index = index + 1
-        }
-    }
-    return [num_matches, matchmap]
-}
-
-async function create() {
+async function create(client, databaseId, containerId) {
     const partitionKey = config.partitionKey;
   
     /**
@@ -83,29 +64,19 @@ async function create() {
     
     const database = client.database(databaseId);
     const container = database.container(containerId);
-    
     // Make sure Tasks database is already setup. If not, create it.
     await create(client, databaseId, containerId);
+
+    // query to return all items
     const querySpec = {
-        query: "SELECT * from c" //SELECT * from c   SELECT top 1 * FROM c order by c._ts desc
-      };
+        query: "SELECT * from c"
+    };
 
-
-    //   // read all items in the Items container
-    // const { resources: items } = await container.items
-    // .query(querySpec)
-    // .fetchAll();
-
-    const {resource: createdItem} = await container.items.create(newItem);
-
-      // read all items in the Items container
-      const { resources: items } = await container.items
-      .query(querySpec)
-      .fetchAll();
-
-    return items
-
+    // read all items in the Items container
+    const { resources: items } = await container.items
+        .query(querySpec)
+        .fetchAll();
+    
+    const { resource: createdItem } = await container.items.create(newItem);
+    return items;
   }
-
-    // notes:
-    // - how do i get the number of entrys in the storage account? need this for looping through
