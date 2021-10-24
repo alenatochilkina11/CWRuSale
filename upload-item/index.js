@@ -13,20 +13,21 @@ module.exports = async function (context, req) {
 
     //const name = (req.query.name || (req.body && req.body.name));
     let name = req.query.name
-    let email = req.query.email
+    let caseID = req.query.caseID
+    let itemCategory = req.query.itemCategory
+    let itemDescripton = req.query.itemDescripton
+    let itemTitle = req.query.itemTitle
 
-    let newItemInfo = [name, email]
+    let newItemInfo = [name, caseID, itemCategory, itemDescripton, itemTitle]
 
-    let newMessage = {
-        message : newItemInfo
+    let newItemEntry = {
+        itemInfo : newItemInfo
         }
 
-    let entries = await createDocument(newMessage);
-
-    const responseMessage = name
-        ? "Hello, " + name + ", " + email + ". This HTTP triggered function executed successfully."
-        : "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.";
-
+    let entries = await createDocument(newItemEntry);
+    
+    const responseMessage = `Thank you, ${entries[entries.length-1].itemInfo[0]}. Your item id is: ${entries[entries.length-1].id}`
+    
     context.res = {
         // status: 200, /* Defaults to 200 */
         body: responseMessage
@@ -67,6 +68,8 @@ async function create(client, databaseId, containerId) {
     // Make sure Tasks database is already setup. If not, create it.
     await create(client, databaseId, containerId);
 
+    const { resource: createdItem } = await container.items.create(newItem);
+
     // query to return all items
     const querySpec = {
         query: "SELECT * from c"
@@ -77,6 +80,6 @@ async function create(client, databaseId, containerId) {
         .query(querySpec)
         .fetchAll();
     
-    const { resource: createdItem } = await container.items.create(newItem);
+    
     return items;
   }
