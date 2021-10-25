@@ -26,7 +26,7 @@ function ItemRequestForm() {
     console.log(itemData);
   }
   return (
-    <Card>
+    <Card data-testid="requestCard">
       <form className={classes.form} onSubmit={submitHandler}>
         <div className={classes.control}>
           <label htmlFor="category">Category</label>
