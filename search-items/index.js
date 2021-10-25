@@ -11,19 +11,21 @@ const config = {
 module.exports = async function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
 
-    let itemCategory = req.query.itemCategory
+    let requestedItemCategory = req.query.itemCategory
 
-    let matchedEntries = await returnItems(itemCategory);
+    //let items = await returnItems();
+
+    let matchedItems = await searchItems(requestedItemCategory);
     
-    const responseMessage = `Thank you`
+    const responseMessage = `Number of Matches: ${matchedItems.length}. Matches held in "matchedItems"`
     
     context.res = {
         // status: 200, /* Defaults to 200 */
-        body: matchedEntries
+        body: responseMessage
     };
 }
 
-  async function returnItems(category){
+  async function searchItems(category){ // param category
     const { endpoint, key, databaseId, containerId } = config;
 
     const client = new CosmosClient({ endpoint, key });
@@ -33,7 +35,7 @@ module.exports = async function (context, req) {
 
     // query to return all items
     const querySpec = {
-        query: "SELECT * from c WHERE itemInfo[2] = category"
+        query: `SELECT * from c WHERE c.itemInfo[2] = "${category}"` // WHERE itemInfo[2] = category //
     };
 
     // read all items in the Items container
@@ -44,3 +46,15 @@ module.exports = async function (context, req) {
     
     return items;
   }
+
+//   async function searchItems(items, category){
+//     let matchedItems = []
+//     let index = 0;
+//     for (let i = 0; i < items.length; i++) {
+//         if (items[i].itemInfo[2] = category){ //entries[entries.length-1].itemInfo[0]
+//             matchedItems[index] = items[i];
+//             index++;
+//         } 
+//       }
+//     return matchedItems;
+//   }
