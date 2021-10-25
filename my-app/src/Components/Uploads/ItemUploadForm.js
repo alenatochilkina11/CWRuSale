@@ -40,15 +40,15 @@ function ItemUploadForm() {
   return (
     <Card>
       <form className={classes.form} onSubmit={submitHandler}>
-        <div className={classes.control}>
+        <div className={classes.control} data-testid="uploadTitle">
           <label htmlFor="title">Item Title</label>
           <input type="text" required id="title" ref={titleInputRef} />
         </div>
-        <div className={classes.control}>
+        <div className={classes.control} data-testid="uploadImage"> 
           <label htmlFor="image">Item Image</label>
           <input type="url" required id="image" ref={imageInputRef} />
         </div>
-        <div className={classes.control}>
+        <div className={classes.control} data-testid="uploadDescription">
           <label htmlFor="description">Description</label>
           <textarea
             id="description"
@@ -57,25 +57,25 @@ function ItemUploadForm() {
             ref={descriptionInputRef}
           ></textarea>
         </div>
-        <div className={classes.control}>
+        <div className={classes.control} data-testid="uploadPrice">
           <label htmlFor="price">Price</label>
           <input type="text" required id="price" ref={priceInputRef} />
         </div>
-        <div className={classes.control}>
+        <div className={classes.control} data-testid="uploadCategory">
           <label htmlFor="category">Category</label>
           <input type="text" required id="category" ref={categoryInputRef} />
         </div>
-        <div className={classes.control}>
+        <div className={classes.control} data-testid="uploadSellerName">
           <label htmlFor="name">Full Name</label>
           <input type="text" required id="name" ref={nameInputRef} />
         </div>
-        <div className={classes.control}>
+        <div className={classes.control} data-testid="uploadSellerEmail">
           <label htmlFor="email">CWRU Network ID</label>
           <input type="text" required id="email" ref={emailInputRef} />
         </div>
-        <div className={classes.control}>
+        <div className={classes.control} data-testid="uploadSellerPhone">
           <label htmlFor="phone">Mobile Phone</label>
-          <input type="text" required id="phone" ref={phoneInputRef} />
+          <input type="text" id="phone" ref={phoneInputRef} />
         </div>
         <div className={classes.actions}>
           <button>Upload Item</button>

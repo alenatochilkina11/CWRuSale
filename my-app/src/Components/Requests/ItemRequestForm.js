@@ -28,19 +28,19 @@ function ItemRequestForm() {
   return (
     <Card data-testid="requestCard">
       <form className={classes.form} onSubmit={submitHandler}>
-        <div className={classes.control}>
+        <div className={classes.control} data-testid="requestCategory">
           <label htmlFor="category">Category</label>
           <input type="text" required id="category" ref={categoryInputRef} />
         </div>
-        <div className={classes.control}>
+        <div className={classes.control} data-testid="requestBuyerName">
           <label htmlFor="name">Full Name</label>
           <input type="text" required id="name" ref={nameInputRef} />
         </div>
-        <div className={classes.control}>
+        <div className={classes.control} data-testid="requestBuyerEmail">
           <label htmlFor="email">CWRU Network ID</label>
           <input type="text" required id="email" ref={emailInputRef} />
         </div>
-        <div className={classes.control}>
+        <div className={classes.control} data-testid="requestBuyerPhone">
           <label htmlFor="phone">Mobile Phone</label>
           <input type="text" required id="phone" ref={phoneInputRef} />
         </div>
