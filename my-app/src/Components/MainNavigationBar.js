@@ -1,5 +1,5 @@
-import {Link} from 'react-router-dom';
-import classes from './MainNavigationBar.module.css';
+import { Link } from "react-router-dom";
+import classes from "./MainNavigationBar.module.css";
 
 function MainNavigationBar() {
   return (
@@ -8,13 +8,13 @@ function MainNavigationBar() {
       <nav>
         <ul>
           <li>
-            <Link to='/item-list'>List of Items</Link>
+            <Link to="/item-list">List of Items</Link>
           </li>
           <li>
-            <Link to='/item-upload'>Upload Item</Link>
+            <Link to="/item-upload">Upload Item</Link>
           </li>
           <li>
-            <Link to='/item-request'>Request Item</Link>
+            <Link to="/item-request">Request Item</Link>
           </li>
         </ul>
       </nav>
