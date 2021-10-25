@@ -6,6 +6,7 @@ function UploadsList(props) {
     <ul className={classes.list}>
       {props.uploads.map((item) => (
         <UploadItem
+          key={item.id}
           id={item.id}
           image={item.image}
           title={item.title}
