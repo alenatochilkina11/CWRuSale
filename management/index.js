@@ -32,7 +32,6 @@ module.exports = async function (context, req) {
 }
 
 
-
   // pass the id and partition key value to delete the item
   async function deleteEntry(itemID){
 
