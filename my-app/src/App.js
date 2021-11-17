@@ -2,12 +2,16 @@ import { Route, Switch } from "react-router-dom";
 import ItemsListPage from "./Page/ItemsList";
 import ItemsUploadPage from "./Page/ItemUpload";
 import ItemsRequestPage from "./Page/ItemRequest";
+import InfoPage from "./Page/Info";
 import Layout from "./Components/Layout/Layout";
 
 function App() {
   return (
     <Layout>
       <Switch>
+        <Route path="/info" exact={true}>
+            <InfoPage /> 
+        </Route>
         <Route path="/item-list" exact={true}>
           <ItemsListPage />
         </Route>
