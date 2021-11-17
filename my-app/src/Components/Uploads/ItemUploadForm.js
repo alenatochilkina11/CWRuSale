@@ -1,28 +1,44 @@
-import { useRef } from "react";
+import { useState } from "react";
 import classes from "./ItemUploadForm.module.css";
 import Card from "../Elems/Card";
 
 function ItemUploadForm() {
-  const titleInputRef = useRef();
-  const imageInputRef = useRef();
-  const descriptionInputRef = useRef();
-  const priceInputRef = useRef();
-  const categoryInputRef = useRef();
-  const nameInputRef = useRef();
-  const emailInputRef = useRef();
-  const phoneInputRef = useRef();
+  const [enteredTitle, setEnteredTitle] = useState('');
+  const [enteredImage, setEnteredImage] = useState('');
+  const [enteredDescription, setEnteredDescription] = useState('');
+  const [enteredPrice, setEnteredPrice] = useState('');
+  const [enteredCategory, setEnteredCategory] = useState('');
+  const [enteredName, setEnteredName] = useState('');
+  const [enteredEmail, setEnteredEmail] = useState('');
+  const [enteredPhone, setEnteredPhone] = useState('');
 
-  function submitHandler(event) {
+  const titleChangeHandler = (event) => {
+    setEnteredTitle(event.target.value);
+  }
+  const imageChangeHandler = (event) => {
+    setEnteredImage(event.target.value);
+  }
+  const descriptionChangeHandler = (event) => {
+    setEnteredDescription(event.target.value);
+  }
+  const priceChangeHandler = (event) => {
+    setEnteredPrice(event.target.value);
+  }
+  const categoryChangeHandler = (event) => {
+    setEnteredCategory(event.target.value);
+  }
+  const nameChangeHandler = (event) => {
+    setEnteredName(event.target.value);
+  }
+  const emailChangeHandler = (event) => {
+    setEnteredEmail(event.target.value);
+  }
+  const phoneChangeHandler = (event) => {
+    setEnteredPhone(event.target.value);
+  }
+
+  const submitHandler = (event) =>{
     event.preventDefault();
-
-    const enteredTitle = titleInputRef.current.value;
-    const enteredImage = imageInputRef.current.value;
-    const enteredDescription = descriptionInputRef.current.value;
-    const enteredPrice = priceInputRef.current.value;
-    const enteredCategory = categoryInputRef.current.value;
-    const enteredName = nameInputRef.current.value;
-    const enteredEmail = emailInputRef.current.value;
-    const enteredPhone = phoneInputRef.current.value;
 
     const itemData = {
       title: enteredTitle,
@@ -36,17 +52,28 @@ function ItemUploadForm() {
     };
 
     console.log(itemData);
+
+    setEnteredTitle('')
+    setEnteredImage('')
+    setEnteredDescription('')
+    setEnteredPrice('')
+    setEnteredCategory('')
+    setEnteredName('')
+    setEnteredEmail('')
+    setEnteredPhone('')
+
+
   }
   return (
     <Card>
       <form className={classes.form} onSubmit={submitHandler}>
         <div className={classes.control} data-testid="uploadTitle">
           <label htmlFor="title">Item Title</label>
-          <input type="text" required id="title" ref={titleInputRef} />
+          <input type="text" required id="title" value={enteredTitle} onChange={titleChangeHandler} />
         </div>
         <div className={classes.control} data-testid="uploadImage"> 
           <label htmlFor="image">Item Image</label>
-          <input type="url" required id="image" ref={imageInputRef} />
+          <input type="url" required id="image" value={enteredImage} onChange={imageChangeHandler} />
         </div>
         <div className={classes.control} data-testid="uploadDescription">
           <label htmlFor="description">Description</label>
@@ -54,28 +81,29 @@ function ItemUploadForm() {
             id="description"
             required
             rows="5"
-            ref={descriptionInputRef}
+            value={enteredDescription}
+            onChange={descriptionChangeHandler}
           ></textarea>
         </div>
-        <div className={classes.control} data-testid="uploadPrice">
+        <div className={classes.control} data-testid="uploadPrice" >
           <label htmlFor="price">Price</label>
-          <input type="text" required id="price" ref={priceInputRef} />
+          <input type="text" required id="price" value={enteredPrice} onChange={priceChangeHandler}/>
         </div>
-        <div className={classes.control} data-testid="uploadCategory">
+        <div className={classes.control} data-testid="uploadCategory" >
           <label htmlFor="category">Category</label>
-          <input type="text" required id="category" ref={categoryInputRef} />
+          <input type="text" required id="category" value={enteredCategory} onChange={categoryChangeHandler}/>
         </div>
-        <div className={classes.control} data-testid="uploadSellerName">
+        <div className={classes.control} data-testid="uploadSellerName" >
           <label htmlFor="name">Full Name</label>
-          <input type="text" required id="name" ref={nameInputRef} />
+          <input type="text" required id="name" value={enteredName} onChange={nameChangeHandler}/>
         </div>
-        <div className={classes.control} data-testid="uploadSellerEmail">
+        <div className={classes.control} data-testid="uploadSellerEmail" >
           <label htmlFor="email">CWRU Network ID</label>
-          <input type="text" required id="email" ref={emailInputRef} />
+          <input type="text" required id="email" value={enteredEmail} onChange={emailChangeHandler}/>
         </div>
-        <div className={classes.control} data-testid="uploadSellerPhone">
+        <div className={classes.control} data-testid="uploadSellerPhone" >
           <label htmlFor="phone">Mobile Phone</label>
-          <input type="text" id="phone" ref={phoneInputRef} />
+          <input type="text" id="phone" value={enteredPhone} onChange={phoneChangeHandler}/>
         </div>
         <div className={classes.actions}>
           <button>Upload Item</button>
