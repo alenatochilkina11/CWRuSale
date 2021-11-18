@@ -2,7 +2,7 @@ import { useState } from "react";
 import classes from "./ItemUploadForm.module.css";
 import Card from "../Elems/Card";
 
-function ItemUploadForm() {
+function ItemUploadForm(props) {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredImage, setEnteredImage] = useState("");
   const [enteredDescription, setEnteredDescription] = useState("");
@@ -41,17 +41,18 @@ function ItemUploadForm() {
     event.preventDefault();
 
     const itemData = {
-      title: enteredTitle,
-      image: enteredImage,
-      description: enteredDescription,
-      price: enteredPrice,
-      category: enteredCategory,
+      itemTitle: enteredTitle,
+      imageUrl: enteredImage,
+      itemDescripton: enteredDescription,
+      itemPrice: enteredPrice,
+      itemCategory: enteredCategory,
       name: enteredName,
-      email: enteredEmail,
+      caseID: enteredEmail,
       phone: enteredPhone,
     };
 
     console.log(itemData);
+    props.onUploadItem(itemData)
 
     setEnteredTitle("");
     setEnteredImage("");
