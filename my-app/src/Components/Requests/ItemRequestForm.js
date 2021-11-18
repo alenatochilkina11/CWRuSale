@@ -2,7 +2,7 @@ import { useState } from "react";
 import classes from "./ItemRequestForm.module.css";
 import Card from "../Elems/Card";
 
-function ItemRequestForm() {
+function ItemRequestForm(props) {
   const [enteredCategory, setEnteredCategory] = useState("");
   const [enteredName, setEnteredName] = useState("");
   const [enteredEmail, setEnteredEmail] = useState("");
@@ -25,13 +25,14 @@ function ItemRequestForm() {
     event.preventDefault();
 
     const itemData = {
-      category: enteredCategory,
+      categoryRequested: enteredCategory,
       name: enteredName,
-      email: enteredEmail,
-      phone: enteredPhone,
+      caseID: enteredEmail,
+      phoneNumber: enteredPhone,
     };
 
     console.log(itemData);
+    props.onRequestItem(itemData)
 
     setEnteredCategory("");
     setEnteredName("");
