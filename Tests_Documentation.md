@@ -17,6 +17,18 @@ Notes:
 
 START TESTING DOCUMENTATION BELOW, SEPEARATE WITH LINES.
 ---------------------------------------------------------------------
+11/DATE/21 [Amy/Alena]
+Tests Run:
+Submit New Item Tests.   | Failed: 
+Request Item Tests.      | Failed: 
+Delete Request/Item Tests| Failed: 
+Search Item Tests        | Failed: 
+UI Component             | Failed: 2
+
+Total Stats: 
+Notes: The modal appears on the page even though the user did not fill out the form completely. Fix proposal - add a conditional statemend on modal and dropdown components. 
+---------------------------------------------------------------------
+---------------------------------------------------------------------
 11/17/21 Alena
 Tests Run:
 Submit New Item Tests.   | Failed: 
