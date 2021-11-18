@@ -41,13 +41,13 @@ function ItemUploadForm(props) {
     event.preventDefault();
 
     const itemData = {
-      title: enteredTitle,
-      image: enteredImage,
-      description: enteredDescription,
-      price: enteredPrice,
-      category: enteredCategory,
+      itemTitle: enteredTitle,
+      imageUrl: enteredImage,
+      itemDescripton: enteredDescription,
+      itemPrice: enteredPrice,
+      itemCategory: enteredCategory,
       name: enteredName,
-      email: enteredEmail,
+      caseID: enteredEmail,
       phone: enteredPhone,
     };
 
