@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event'
 import ItemRequestForm from './ItemRequestForm';
 
 test('render request form card', () => {
@@ -25,4 +26,10 @@ test('render request form buyer email', () => {
 test('render request form buyer phone', () => {
     render(<ItemRequestForm />);
     expect(screen.getByTestId('requestBuyerPhone')).toBeInTheDocument();
+})
+
+test('render the button in the form', () =>{
+    render(<ItemRequestForm />);
+    userEvent.click(screen.getByText('notify me', {exact : false}))
+
 })

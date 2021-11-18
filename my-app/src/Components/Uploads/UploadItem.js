@@ -1,9 +1,10 @@
 import classes from './UploadItem.module.css';
 import Card from '../Elems/Card';
-import Modal from '../Elems/Modal';
-import Backdrop from '../Elems/Backdrop';
+// import Modal from '../Elems/Modal';
+// import Backdrop from '../Elems/Backdrop';
 
 function UploadItem(props){
+  // const category = props.category
     return (
         <li className={classes.item}>
         <Card>
