@@ -63,7 +63,7 @@ function ItemsListPage(props) {
   //     </section>
   //   );
   // }
-  
+
     const [filteredCategory, setFilteredCategory] = useState('All');
     const filterChangeHandler = selectedCategory => {
       setFilteredCategory(selectedCategory);

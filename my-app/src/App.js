@@ -9,7 +9,7 @@ function App() {
   return (
     <Layout>
       <Switch>
-        <Route path="/info" exact={true}>
+        <Route path="/" exact={true}>
             <InfoPage /> 
         </Route>
         <Route path="/item-list" exact={true}>
