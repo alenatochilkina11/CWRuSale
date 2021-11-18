@@ -63,17 +63,19 @@ function ItemsListPage(props) {
   //     </section>
   //   );
   // }
+  
     const [filteredCategory, setFilteredCategory] = useState('All');
     const filterChangeHandler = selectedCategory => {
       setFilteredCategory(selectedCategory);
     }
+
     return (
         <section>
           <h1>All Items</h1>
           <div>
             <ItemFilter onChange={filterChangeHandler}/>
           </div>
-          <UploadsList uploads={DUMMY_DATA} /> 
+          <UploadsList filter={filteredCategory} uploads={DUMMY_DATA} /> 
         </section>
       );
 }
