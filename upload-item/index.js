@@ -17,8 +17,11 @@ module.exports = async function (context, req) {
     let itemCategory = req.query.itemCategory
     let itemDescripton = req.query.itemDescripton
     let itemTitle = req.query.itemTitle
+    let itemPrice = req.query.itemPrice
+    let phone = req.query.phone
+    let imageUrl = req.query.imageUrl
 
-    let newItemInfo = [name, caseID, itemCategory, itemDescripton, itemTitle]
+    let newItemInfo = [name, caseID, itemCategory, itemDescripton, itemTitle, itemPrice, phone, imageUrl]
 
     let newItemEntry = {
         itemInfo : newItemInfo
