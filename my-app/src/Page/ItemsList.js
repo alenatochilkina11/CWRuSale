@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import UploadsList from "../Components/Uploads/UploadsList";
 
 const DUMMY_DATA = [
@@ -22,12 +23,48 @@ const DUMMY_DATA = [
 ];
 
 function ItemsListPage() {
+  // const [isLoading, setIsLoading] = useState(true);
+  // const [loadedItems, setLoadedItems] = useState([]);
+
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   fetch(
+  //     'https://cwru-sale.azurewebsites.net/api/upload-item'
+  //   )
+  //     .then((response) => {
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       const items = [];
+
+  //       for (const key in data) {
+  //         const item = {
+  //           id: key,
+  //           ...data[key]
+  //         };
+
+  //         items.push(item);
+  //       }
+
+  //       setIsLoading(false);
+  //       setLoadedItems(items);
+  //     });
+  // }, []);
+
+  // if (isLoading) {
+  //   return (
+  //     <section>
+  //       <p>Loading...</p>
+  //     </section>
+  //   );
+  // }
+
     return (
         <section>
           <h1>All Items</h1>
-          <UploadsList uploads={DUMMY_DATA} />
+          <UploadsList uploads={DUMMY_DATA} /> 
         </section>
       );
 }
-
+//Change DUMMY_DATA to loadedItems once fetch method is figured out
 export default ItemsListPage;
