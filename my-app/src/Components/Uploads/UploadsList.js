@@ -8,10 +8,10 @@ function UploadsList(props) {
         <UploadItem
           key={item.id}
           id={item.id}
-          image={item.image}
-          title={item.title}
-          description={item.description}
-          price={item.price}
+          image={item.imageURL}
+          title={item.itemTitle}
+          description={item.itemDescription}
+          price={item.itemPrice}
         />
       ))}
     </ul>
