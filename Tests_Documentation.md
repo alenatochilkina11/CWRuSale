@@ -3,7 +3,7 @@ Notes include what needs to be fixed before the next round of testing. The tests
 Below is a sample that may be copied and pasted to document each test
 
 ------------------------------SAMPLE---------------------------------
-11/DATE/21 [Amy/Alena]
+11/18/21 Alena
 Tests Run:
 Submit New Item Tests.   | Failed: 
 Request Item Tests.      | Failed: 
