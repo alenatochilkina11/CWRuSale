@@ -1,8 +1,19 @@
 import { useState } from "react";
 import classes from "./ItemUploadForm.module.css";
 import Card from "../Elems/Card";
+import Modal from "../Elems/Modal";
+import Backdrop from "../Elems/Backdrop";
 
 function ItemUploadForm(props) {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const btnHandler = () => {
+    setModalIsOpen(true);
+  };
+
+  function closeModalHandler() {
+    setModalIsOpen(false);
+  };
+
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredImage, setEnteredImage] = useState("");
   const [enteredDescription, setEnteredDescription] = useState("");
@@ -146,7 +157,11 @@ function ItemUploadForm(props) {
           />
         </div>
         <div className={classes.actions}>
-          <button>Upload Item</button>
+          <button onClick={btnHandler}>Upload Item</button>
+        </div>
+        <div>
+          {modalIsOpen && <Modal text='Your Item Has Been Submitted!' onCancel={closeModalHandler}/>}
+          {modalIsOpen && <Backdrop onClick={closeModalHandler} />}
         </div>
       </form>
     </Card>
