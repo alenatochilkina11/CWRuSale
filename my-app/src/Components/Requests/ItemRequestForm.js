@@ -1,8 +1,19 @@
 import { useState } from "react";
 import classes from "./ItemRequestForm.module.css";
 import Card from "../Elems/Card";
+import Modal from "../Elems/Modal";
+import Backdrop from "../Elems/Backdrop";
 
 function ItemRequestForm(props) {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const btnHandler = () => {
+    setModalIsOpen(true);
+  };
+
+  function closeModalHandler() {
+    setModalIsOpen(false);
+  };
+
   const [enteredCategory, setEnteredCategory] = useState("");
   const [enteredName, setEnteredName] = useState("");
   const [enteredEmail, setEnteredEmail] = useState("");
@@ -32,7 +43,7 @@ function ItemRequestForm(props) {
     };
 
     console.log(itemData);
-    props.onRequestItem(itemData)
+    props.onRequestItem(itemData);
 
     setEnteredCategory("");
     setEnteredName("");
@@ -83,7 +94,11 @@ function ItemRequestForm(props) {
           />
         </div>
         <div className={classes.actions}>
-          <button>Notify Me!</button>
+          <button onClick={btnHandler}>Notify Me!</button>
+        </div>
+        <div>
+          {modalIsOpen && <Modal text='Your Request Has Been Submitted!' onCancel={closeModalHandler}/>}
+          {modalIsOpen && <Backdrop onClick={closeModalHandler} />}
         </div>
       </form>
     </Card>
