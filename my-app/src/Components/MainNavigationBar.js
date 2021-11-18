@@ -5,16 +5,12 @@ function MainNavigationBar() {
   return (
     <header className={classes.header}>
       <div className={classes.logo} data-testid="NavBarLogo">
-        {" "}
-        CWRuSale{" "}
+        <Link to="/" data-testid="infoLink">
+        {" "}CWRuSale{" "}
+        </Link>
       </div>
       <nav>
         <ul>
-          <li>
-            <Link to="/info" data-testid="infoLink">
-              Info
-            </Link>
-          </li>
           <li>
             <Link to="/item-list" data-testid="itemListLink">
               List of Items
