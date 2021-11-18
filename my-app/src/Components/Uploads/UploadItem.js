@@ -1,5 +1,7 @@
 import classes from './UploadItem.module.css';
 import Card from '../Elems/Card';
+import Modal from '../Elems/Modal';
+import Backdrop from '../Elems/Backdrop';
 
 function UploadItem(props){
     return (
