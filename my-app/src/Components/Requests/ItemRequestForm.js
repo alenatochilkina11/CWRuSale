@@ -97,7 +97,7 @@ function ItemRequestForm(props) {
           <button onClick={btnHandler}>Notify Me!</button>
         </div>
         <div>
-          {modalIsOpen && <Modal text='Your Request Has Been Submitted!' onCancel={closeModalHandler}/>}
+          {modalIsOpen && <Modal text={props.text} onCancel={closeModalHandler}/>}
           {modalIsOpen && <Backdrop onClick={closeModalHandler} />}
         </div>
       </form>
