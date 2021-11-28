@@ -62,7 +62,6 @@ function ItemUploadForm(props) {
       phone: enteredPhone,
     };
 
-    console.log(itemData);
     props.onUploadItem(itemData)
 
     setEnteredTitle("");
@@ -160,7 +159,7 @@ function ItemUploadForm(props) {
           <button onClick={btnHandler}>Upload Item</button>
         </div>
         <div>
-          {modalIsOpen && <Modal text='Your Item Has Been Submitted!' onCancel={closeModalHandler}/>}
+          {modalIsOpen && <Modal text={props.text} onCancel={closeModalHandler}/>}
           {modalIsOpen && <Backdrop onClick={closeModalHandler} />}
         </div>
       </form>
