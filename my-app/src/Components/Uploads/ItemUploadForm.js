@@ -12,7 +12,7 @@ function ItemUploadForm(props) {
 
   function closeModalHandler() {
     setModalIsOpen(false);
-  };
+  }
 
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredImage, setEnteredImage] = useState("");
@@ -62,7 +62,7 @@ function ItemUploadForm(props) {
       phone: enteredPhone,
     };
 
-    props.onUploadItem(itemData)
+    props.onUploadItem(itemData);
 
     setEnteredTitle("");
     setEnteredImage("");
@@ -159,7 +159,9 @@ function ItemUploadForm(props) {
           <button onClick={btnHandler}>Upload Item</button>
         </div>
         <div>
-          {modalIsOpen && <Modal text={props.text} onCancel={closeModalHandler}/>}
+          {modalIsOpen && (
+            <Modal text={props.text} onCancel={closeModalHandler} />
+          )}
           {modalIsOpen && <Backdrop onClick={closeModalHandler} />}
         </div>
       </form>

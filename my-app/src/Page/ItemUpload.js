@@ -2,18 +2,17 @@ import { useState } from "react";
 import ItemUploadForm from "../Components/Uploads/ItemUploadForm";
 
 function ItemsUploadPage() {
-  const [uploadText, setUploadText] = useState('')
+  const [uploadText, setUploadText] = useState("");
 
   const uploadItemHandler = async (itemData) => {
-    
     const res = await fetch(
       "https://cwru-sale.azurewebsites.net/api/upload-item?" +
-      new URLSearchParams(itemData),
+        new URLSearchParams(itemData),
       { method: "GET" }
-    )
+    );
 
-    const text = await res.text()
-    setUploadText(text)
+    const text = await res.text();
+    setUploadText(text);
   };
 
   return (
