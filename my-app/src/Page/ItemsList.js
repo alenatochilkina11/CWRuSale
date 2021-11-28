@@ -69,6 +69,14 @@ function ItemsListPage(props) {
       setFilteredCategory(selectedCategory);
     }
 
+    // let itemsToShow;
+
+    // if(needFilter == true) { 
+    //   itemsToShow = DUMMY_DATA.filter(filter)
+    // } else {
+    //   itemsToShow = DUMMY_DATA
+    // }
+ 
     return (
         <section>
           <h1>All Items</h1>

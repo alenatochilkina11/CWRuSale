@@ -4,9 +4,9 @@ import Card from '../Elems/Card';
 // import Backdrop from '../Elems/Backdrop';
 
 function UploadItem(props){
-  // const category = props.category
     return (
         <li className={classes.item}>
+
         <Card>
           <div className={classes.image}>
             <img src={props.image} alt={props.title} />
