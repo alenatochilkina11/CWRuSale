@@ -12,7 +12,7 @@ function ItemRequestForm(props) {
 
   function closeModalHandler() {
     setModalIsOpen(false);
-  };
+  }
 
   const [enteredCategory, setEnteredCategory] = useState("");
   const [enteredName, setEnteredName] = useState("");
@@ -97,7 +97,9 @@ function ItemRequestForm(props) {
           <button onClick={btnHandler}>Notify Me!</button>
         </div>
         <div>
-          {modalIsOpen && <Modal text={props.text} onCancel={closeModalHandler}/>}
+          {modalIsOpen && (
+            <Modal text={props.text} onCancel={closeModalHandler} />
+          )}
           {modalIsOpen && <Backdrop onClick={closeModalHandler} />}
         </div>
       </form>

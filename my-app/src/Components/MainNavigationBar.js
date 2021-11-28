@@ -6,7 +6,8 @@ function MainNavigationBar() {
     <header className={classes.header}>
       <div className={classes.logo} data-testid="NavBarLogo">
         <Link to="/" data-testid="infoLink">
-        {" "}CWRuSale{" "}
+          {" "}
+          CWRuSale{" "}
         </Link>
       </div>
       <nav>
