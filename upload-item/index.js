@@ -17,16 +17,27 @@ module.exports = async function (context, req) {
     let itemCategory = req.query.itemCategory
     let itemDescripton = req.query.itemDescripton
     let itemTitle = req.query.itemTitle
+    let itemPrice = req.query.itemPrice
+    let phone = req.query.phone
+    let imageUrl = req.query.imageUrl
 
-    let newItemInfo = [name, caseID, itemCategory, itemDescripton, itemTitle]
+    //let newItemInfo = [name, caseID, itemCategory, itemDescripton, itemTitle, itemPrice, phone, imageUrl]
 
     let newItemEntry = {
-        itemInfo : newItemInfo
+        //itemInfo : newItemInfo
+        name : name,
+        caseID: caseID,
+        itemCategory: itemCategory,
+        itemDescripton: itemDescripton,
+        itemTitle: itemTitle,
+        itemPrice: itemPrice,
+        phone: phone,
+        imageUrl: imageUrl
         }
 
     let entries = await createDocument(newItemEntry);
     
-    const responseMessage = `Thank you, ${entries[entries.length-1].itemInfo[0]}. Your item id is: ${entries[entries.length-1].id}`
+    const responseMessage = `Thank you, ${entries[entries.length-1].name}. Your item id is: ${entries[entries.length-1].id}`
     
     context.res = {
         // status: 200, /* Defaults to 200 */

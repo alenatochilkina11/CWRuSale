@@ -20,12 +20,16 @@ module.exports = async function (context, req) {
     let newRequestInfo = [name, caseID, phoneNumber, categoryRequested]
 
     let newRequestEntry = {
-        requestInfo : newRequestInfo
+        //requestInfo : newRequestInfo
+        name: name,
+        caseID: caseID,
+        phoneNumber: phoneNumber, 
+        categoryRequested: categoryRequested
         }
 
     let entries = await createDocument(newRequestEntry);
     
-    const responseMessage = `Thank you, ${entries[entries.length-1].requestInfo[0]}. Your request id is: ${entries[entries.length-1].id}.}`
+    const responseMessage = `Thank you, ${entries[entries.length-1].name}. Your request id is: ${entries[entries.length-1].id}.`
     
     context.res = {
         // status: 200, /* Defaults to 200 */
