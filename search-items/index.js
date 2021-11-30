@@ -16,12 +16,13 @@ module.exports = async function (context, req) {
     //let items = await returnItems();
 
     let matchedItems = await searchItems(requestedItemCategory);
+    var jsonArray = JSON.stringify(matchedItems)
     
     const responseMessage = `Number of Matches: ${matchedItems.length}. Matches held in "matchedItems"`
     
     context.res = {
         // status: 200, /* Defaults to 200 */
-        body: responseMessage
+        body: jsonArray //responseMessage -> changed to the array
     };
 
     
@@ -37,7 +38,7 @@ module.exports = async function (context, req) {
 
     // query to return all items
     const querySpec = {
-        query: `SELECT * from c WHERE c.itemInfo[2] = "${category}"` // WHERE itemInfo[2] = category //
+        query: `SELECT * from c WHERE c.itemCategory = "${category}"` // WHERE itemInfo[2] = category //
     };
 
     // read all items in the Items container
