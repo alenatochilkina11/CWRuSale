@@ -15,8 +15,6 @@ function ItemFilter() {
           <option value="Bathroom">Bathroom</option>
           <option value="Kitchen">Kitchen</option>
           <option value="Technology">Technology</option>
-          <option value="Art">Art</option>
-          <option value="Painting">Painting</option>
         </select>
       </div>
     </div>

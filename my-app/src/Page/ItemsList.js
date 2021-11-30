@@ -32,54 +32,23 @@ const DUMMY_DATA = [
 ];
 
 function ItemsListPage(props) {
-  // const [isLoading, setIsLoading] = useState(true);
-  // const [loadedItems, setLoadedItems] = useState([]);
-
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   fetch(
-  //     'https://cwru-sale.azurewebsites.net/api/upload-item'
-  //   )
-  //     .then((response) => {
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       const items = [];
-
-  //       for (const key in data) {
-  //         const item = {
-  //           id: key,
-  //           ...data[key]
-  //         };
-
-  //         items.push(item);
-  //       }
-
-  //       setIsLoading(false);
-  //       setLoadedItems(items);
-  //     });
-  // }, []);
-
-  // if (isLoading) {
-  //   return (
-  //     <section>
-  //       <p>Loading...</p>
-  //     </section>
-  //   );
-  // }
 
   const [filteredCategory, setFilteredCategory] = useState("All");
   const filterChangeHandler = (selectedCategory) => {
     setFilteredCategory(selectedCategory);
   };
 
-  // let itemsToShow;
+  // let itemsToShow; --> Array that will be displayed
 
-  // if(needFilter == true) {
-  //   itemsToShow = DUMMY_DATA.filter(filter)
+  // if(filteredCategory != "All") {
+  //   const res = fetch(
+  //     "https://cwru-sale.azurewebsites.net/api/search-items?itemCategory=" + filteredCategory,
+  //     { method: "GET" }
+  //   );
+  //   itemsToShow = res.body;
   // } else {
-  //   itemsToShow = DUMMY_DATA
-  // }
+  //   itemsToShow = ??? --> need a function that returns all elements 
+  // };
 
   return (
     <section>
@@ -91,5 +60,7 @@ function ItemsListPage(props) {
     </section>
   );
 }
-//Change DUMMY_DATA to loadedItems once fetch method is figured out
+
+//Change DUMMY_DATA to itemsToShow once fetch method is figured out
+
 export default ItemsListPage;

@@ -10,21 +10,38 @@ function UploadsList(props) {
   //add conditional statements:
   //1. If filteredItems.length == 0, returm a message
   //2. If props.filter == 'All' return props.uploads.map((item) => ...) (the entire array)
-  return (
-    <ul className={classes.list}>
-      {props.uploads.map((item) => (
-        <UploadItem
-          key={item.id}
-          id={item.id}
-          image={item.imageURL}
-          title={item.itemTitle}
-          description={item.itemDescription}
-          price={item.itemPrice}
-          category={item.itemCategory}
-        />
-      ))}
-    </ul>
-  );
+//   return (
+//     <ul className={classes.list}>
+//       {props.uploads.map((item) => (
+//         <UploadItem
+//           key={item.id}
+//           id={item.id}
+//           image={item.itemInfo[7]}
+//           title={item.itemInfo[4]}
+//           description={item.itemInfo[3]}
+//           price={item.itemInfo[5]}
+//         />
+//       ))}
+//     </ul>
+//   );
+// }
+return (
+  <ul className={classes.list}>
+    {props.uploads.map((item) => (
+      <UploadItem
+        key={item.id}
+        id={item.id}
+        image={item.imageURL}
+        title={item.itemTitle}
+        description={item.itemDescription}
+        price={item.itemPrice}
+        category={item.itemCategory}
+      />
+    ))}
+  </ul>
+);
 }
+
+
 
 export default UploadsList;
