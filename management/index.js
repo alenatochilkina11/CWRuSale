@@ -1,3 +1,4 @@
+
 const CosmosClient = require("@azure/cosmos").CosmosClient;
 
   const config = {
@@ -13,9 +14,8 @@ module.exports = async function (context, req) {
 
     let requestID = req.query.requestID
 
-    let result = await findItemsToDelete(requestID)
+    let responseMessage = await findItemsToDelete(requestID)
 
-    const responseMessage = `executed ${result}` //, ${result}
     context.res = {
         // status: 200, /* Defaults to 200 */
         body: responseMessage
@@ -23,34 +23,48 @@ module.exports = async function (context, req) {
 }
 
 
-
 async function findItemsToDelete(idToDelete){
 
-    let id = idToDelete
-    let category = "test"
-
-
     const { endpoint, key, databaseId, containerId } = config;
-
     const client = new CosmosClient({ endpoint, key });
-    
     const database = client.database(databaseId);
     const container = database.container(containerId);
 
-     // query to return all items
-     const querySpec = {
-         query: `SELECT * FROM c WHERE c.id = "${idToDelete}"`
-     };
+      // query to return all items
+      const querySpec = {
+          query: `SELECT * FROM c WHERE c.id = "${idToDelete}"`
+      };
 
-     // read all items in the Items container
-     const { resources: items } = await container.items
-         .query(querySpec)
-         .fetchAll();
+      // read all items in the Items container
+      const { resources: items } = await container.items
+          .query(querySpec)
+          .fetchAll();
+      
+      let message;
 
+      let exists = false;
+      for (let i = 0; i < items.length; i++) {
+          if (items[i].id == idToDelete){
+            exists = true;
+            break;
+          }
+      }
 
-    //const { resource: result } = await container.item(id, category).delete(); // category may need to change to "<partition-key-value"
-    
-    return items;
+      if (exists){
+        try{
+          const { resource: result } = await container.item(id).delete();
+          message = "Request Deleted"
+        }
+        catch(err){
+          message = "Request with ID Exists, Failed to Delete"
+        }
+      }
+      else{
+        message = "Request with ID Does not Exist"
+      }
+
+     // category may need to change to "<partition-key-value" // const { resource: result } = await container.item(id, category).delete();
+    return message;
   }
 
   // add category option
