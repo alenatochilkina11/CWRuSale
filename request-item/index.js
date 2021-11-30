@@ -24,7 +24,8 @@ module.exports = async function (context, req) {
         name: name,
         caseID: caseID,
         phoneNumber: phoneNumber, 
-        categoryRequested: categoryRequested
+        categoryRequested: categoryRequested,
+        requests: "request"
         }
 
     let entries = await createDocument(newRequestEntry);
