@@ -23,10 +23,12 @@ module.exports = async function (context, req) {
 }
 
 
+
 async function findItemsToDelete(idToDelete){
 
     let id = idToDelete
     let category = "test"
+
 
     const { endpoint, key, databaseId, containerId } = config;
 

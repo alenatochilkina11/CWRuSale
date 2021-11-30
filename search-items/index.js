@@ -24,6 +24,8 @@ module.exports = async function (context, req) {
         // status: 200, /* Defaults to 200 */
         body: jsonArray //responseMessage -> changed to the array
     };
+
+    
 }
 
   async function searchItems(category){ // param category

@@ -23,6 +23,7 @@ module.exports = async function (context, req) {
 
     //let newItemInfo = [name, caseID, itemCategory, itemDescripton, itemTitle, itemPrice, phone, imageUrl]
 
+
     let newItemEntry = {
         //itemInfo : newItemInfo
         name : name,
