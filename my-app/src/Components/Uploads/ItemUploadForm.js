@@ -6,9 +6,13 @@ import Backdrop from "../Elems/Backdrop";
 
 function ItemUploadForm(props) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const form = document.getElementById("upload-form");
 
   const btnHandler = () => {
-    setModalIsOpen(true);
+      // console.log("hello");
+      if (form != null && form.reportValidity()) {
+        setModalIsOpen(true);
+      }
   };
 
   function closeModalHandler() {
@@ -76,7 +80,7 @@ function ItemUploadForm(props) {
   };
   return (
     <Card>
-      <form className={classes.form} onSubmit={submitHandler}>
+      <form id="upload-form" className={classes.form} onSubmit={submitHandler}>
         <div className={classes.control} data-testid="uploadTitle">
           <label htmlFor="title">Item Title</label>
           <input
@@ -124,6 +128,7 @@ function ItemUploadForm(props) {
         <div className={classes.control} data-testid="uploadCategory">
           <label htmlFor="category">Category</label>
           <select onChange={categoryChangeHandler} required>
+            <option value=""></option>
             <option value="Textbook">Textbook</option>
             <option value="Academic">Academic</option>
             <option value="Bedroom">Bedroom</option>

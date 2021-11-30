@@ -5,9 +5,13 @@ import Modal from "../Elems/Modal";
 import Backdrop from "../Elems/Backdrop";
 
 function ItemRequestForm(props) {
+  const form = document.getElementById("request_form");
   const [modalIsOpen, setModalIsOpen] = useState(false);
+
   const btnHandler = () => {
-    setModalIsOpen(true);
+    if (form != null && form.reportValidity()) {
+      setModalIsOpen(true);
+    }
   };
 
   function closeModalHandler() {
@@ -52,10 +56,11 @@ function ItemRequestForm(props) {
   }
   return (
     <Card data-testid="requestCard">
-      <form className={classes.form} onSubmit={submitHandler}>
+      <form id="request_form" className={classes.form} onSubmit={submitHandler}>
         <div className={classes.control} data-testid="requestCategory">
           <label htmlFor="category">Category</label>
           <select onChange={categoryChangeHandler} required>
+            <option value=""></option>
             <option value="Textbook">Textbook</option>
             <option value="Academic">Academic</option>
             <option value="Bedroom">Bedroom</option>
