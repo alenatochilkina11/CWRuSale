@@ -98,7 +98,7 @@ function ItemUploadForm(props) {
             type="url"
             required
             id="image"
-            placeholder="http://image.com"
+            placeholder="http://image.jpg"
             value={enteredImage}
             onChange={imageChangeHandler}
           />
