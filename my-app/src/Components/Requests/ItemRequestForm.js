@@ -55,13 +55,14 @@ function ItemRequestForm(props) {
       <form className={classes.form} onSubmit={submitHandler}>
         <div className={classes.control} data-testid="requestCategory">
           <label htmlFor="category">Category</label>
-          <input
-            type="text"
-            required
-            id="category"
-            value={enteredCategory}
-            onChange={categoryChangeHandler}
-          />
+          <select onChange={categoryChangeHandler} required>
+            <option value="Textbook">Textbook</option>
+            <option value="Academic">Academic</option>
+            <option value="Bedroom">Bedroom</option>
+            <option value="Bathroom">Bathroom</option>
+            <option value="Kitchen">Kitchen</option>
+            <option value="Technology">Technology</option>
+          </select>
         </div>
         <div className={classes.control} data-testid="requestBuyerName">
           <label htmlFor="name">Full Name</label>
@@ -69,6 +70,7 @@ function ItemRequestForm(props) {
             type="text"
             required
             id="name"
+            placeholder="Johnny Appleseed"
             value={enteredName}
             onChange={nameChangeHandler}
           />
@@ -79,6 +81,7 @@ function ItemRequestForm(props) {
             type="text"
             required
             id="email"
+            placeholder="abc123"
             value={enteredEmail}
             onChange={emailChangeHandler}
           />
@@ -86,9 +89,11 @@ function ItemRequestForm(props) {
         <div className={classes.control} data-testid="requestBuyerPhone">
           <label htmlFor="phone">Mobile Phone</label>
           <input
-            type="text"
+            type="tel"
             required
             id="phone"
+            placeholder="000-000-0000"
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
             value={enteredPhone}
             onChange={phoneChangeHandler}
           />
