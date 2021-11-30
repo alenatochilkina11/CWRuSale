@@ -6,6 +6,7 @@ import Backdrop from "../Elems/Backdrop";
 
 function ItemUploadForm(props) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+
   const btnHandler = () => {
     setModalIsOpen(true);
   };
@@ -82,6 +83,7 @@ function ItemUploadForm(props) {
             type="text"
             required
             id="title"
+            placeholder="E.g. Calculus Book"
             value={enteredTitle}
             onChange={titleChangeHandler}
           />
@@ -92,6 +94,7 @@ function ItemUploadForm(props) {
             type="url"
             required
             id="image"
+            placeholder="URL"
             value={enteredImage}
             onChange={imageChangeHandler}
           />
@@ -102,6 +105,7 @@ function ItemUploadForm(props) {
             id="description"
             required
             rows="5"
+            placeholder="E.g. Condition, Age, etc."
             value={enteredDescription}
             onChange={descriptionChangeHandler}
           ></textarea>
@@ -112,19 +116,21 @@ function ItemUploadForm(props) {
             type="text"
             required
             id="price"
+            placeholder="10$ OR 5$ - 10$ OR Negotiable"
             value={enteredPrice}
             onChange={priceChangeHandler}
           />
         </div>
         <div className={classes.control} data-testid="uploadCategory">
           <label htmlFor="category">Category</label>
-          <input
-            type="text"
-            required
-            id="category"
-            value={enteredCategory}
-            onChange={categoryChangeHandler}
-          />
+          <select onChange={categoryChangeHandler} required>
+            <option value="Textbook">Textbook</option>
+            <option value="Academic">Academic</option>
+            <option value="Bedroom">Bedroom</option>
+            <option value="Bathroom">Bathroom</option>
+            <option value="Kitchen">Kitchen</option>
+            <option value="Technology">Technology</option>
+          </select>
         </div>
         <div className={classes.control} data-testid="uploadSellerName">
           <label htmlFor="name">Full Name</label>
@@ -132,6 +138,7 @@ function ItemUploadForm(props) {
             type="text"
             required
             id="name"
+            placeholder="Johnny Appleseed"
             value={enteredName}
             onChange={nameChangeHandler}
           />
@@ -142,6 +149,7 @@ function ItemUploadForm(props) {
             type="text"
             required
             id="email"
+            placeholder="abc123"
             value={enteredEmail}
             onChange={emailChangeHandler}
           />
@@ -149,8 +157,10 @@ function ItemUploadForm(props) {
         <div className={classes.control} data-testid="uploadSellerPhone">
           <label htmlFor="phone">Mobile Phone</label>
           <input
-            type="text"
+            type="tel"
             id="phone"
+            placeholder="000-000-0000"
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
             value={enteredPhone}
             onChange={phoneChangeHandler}
           />
