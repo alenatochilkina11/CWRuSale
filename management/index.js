@@ -34,16 +34,19 @@ module.exports = async function (context, req) {
 async function findDataToDelete(idToDelete) {
   let message; // message to be returned to user
   let category;
+  let name;
 
   let [items, item_container] = await checkItemsWithID(idToDelete)
   let [requests, requests_container] = await checkRequestsWithID(idToDelete)
 
   if (items.length > 0) {
     category = "item"
+    name = items[0].name
     container = item_container
   }
   else if (requests.length > 0) {
     category = "request"
+    name = requests[0].name
     container = requests_container
   }
   else {
@@ -53,7 +56,7 @@ async function findDataToDelete(idToDelete) {
 
   try {
     const { resource: result } = await container.item(idToDelete, category).delete();
-    message = "Request/Item deleted successfully."
+    message = `Thank you, ${name}. Request/Item deleted successfully.`
   }
   catch (err) {
     message = "Request/Item with ID Exists, failed to delete."

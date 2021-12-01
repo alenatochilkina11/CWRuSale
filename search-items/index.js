@@ -15,13 +15,13 @@ module.exports = async function (context, req) {
 
   //let items = await returnItems();
   let matchedItems
-  if (requestedItemCategory == "All"){
+  if (requestedItemCategory == "All" || requestedItemCategory == "Select"){
     matchedItems = await getAll();
 
   }else {
     matchedItems = await searchItems(requestedItemCategory);
   }
-  var jsonArray = JSON.stringify(matchedItems)
+  var jsonArray = JSON.parse(JSON.stringify(matchedItems))
 
   const responseMessage = `Number of Matches: ${matchedItems.length}. Matches held in "matchedItems"`
 
