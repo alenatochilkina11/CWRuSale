@@ -4,6 +4,7 @@ import ItemsUploadPage from "./Page/ItemUpload";
 import ItemsRequestPage from "./Page/ItemRequest";
 import InfoPage from "./Page/Info";
 import Layout from "./Components/Layout/Layout";
+import ItemsDeletePage from "./Page/ItemDelete"
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
         </Route>
         <Route path="/item-request" exact={true}>
           <ItemsRequestPage />
+        </Route>
+        <Route path="/item-manage" exact={true}>
+          <ItemsDeletePage />
         </Route>
       </Switch>
     </Layout>

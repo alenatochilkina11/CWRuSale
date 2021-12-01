@@ -27,6 +27,11 @@ function MainNavigationBar() {
               Request Item
             </Link>
           </li>
+          <li>
+            <Link to="/item-manage" data-testid="itemDeleteLink">
+              Manage
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>
