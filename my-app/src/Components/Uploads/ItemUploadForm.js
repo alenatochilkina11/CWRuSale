@@ -98,10 +98,11 @@ function ItemUploadForm(props) {
             type="url"
             required
             id="image"
-            placeholder="URL"
+            placeholder="http://image.jpg"
             value={enteredImage}
             onChange={imageChangeHandler}
           />
+          <small><a href ="https://postimages.org/" target="_blank"> Convert your image to URL</a></small>
         </div>
         <div className={classes.control} data-testid="uploadDescription">
           <label htmlFor="description">Description</label>

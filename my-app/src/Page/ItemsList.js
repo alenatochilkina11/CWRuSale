@@ -32,64 +32,44 @@ const DUMMY_DATA = [
 ];
 
 function ItemsListPage(props) {
-  // const [isLoading, setIsLoading] = useState(true);
-  // const [loadedItems, setLoadedItems] = useState([]);
-
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   fetch(
-  //     'https://cwru-sale.azurewebsites.net/api/upload-item'
-  //   )
-  //     .then((response) => {
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       const items = [];
-
-  //       for (const key in data) {
-  //         const item = {
-  //           id: key,
-  //           ...data[key]
-  //         };
-
-  //         items.push(item);
-  //       }
-
-  //       setIsLoading(false);
-  //       setLoadedItems(items);
-  //     });
-  // }, []);
-
-  // if (isLoading) {
-  //   return (
-  //     <section>
-  //       <p>Loading...</p>
-  //     </section>
-  //   );
-  // }
-
   const [filteredCategory, setFilteredCategory] = useState("All");
-  const filterChangeHandler = (selectedCategory) => {
+
+  const filterChangeHandler = async (selectedCategory) => {
     setFilteredCategory(selectedCategory);
+    const filtered = await getFilteredItems(selectedCategory)
+    console.log(filtered)
+    setItemsToShow(filtered)
   };
 
-  // let itemsToShow;
+  const [itemsToShow, setItemsToShow] = useState([]);
 
-  // if(needFilter == true) {
-  //   itemsToShow = DUMMY_DATA.filter(filter)
-  // } else {
-  //   itemsToShow = DUMMY_DATA
-  // }
+  const getFilteredItems = async (category) => {
+    try {
+      if (category !== "All") {
+        const res = await fetch("https://cwru-sale.azurewebsites.net/api/search-items?itemCategory=" + category, { method: "GET" });
+        const arr = await res.json()
+        return arr
+      }
+      return DUMMY_DATA
+    } catch (error) {
+      return DUMMY_DATA
+    }
+  }
 
-  return (
-    <section>
-      <h1>All Items</h1>
-      <div>
+  if (itemsToShow.length != 0)
+    return (
+      <section>
+        <h1>All Items</h1>
         <ItemFilter onChange={filterChangeHandler} />
-      </div>
-      <UploadsList filter={filteredCategory} uploads={DUMMY_DATA} />
-    </section>
-  );
+        <UploadsList filter={filteredCategory} uploads={itemsToShow} />
+      </section>
+    );
+  
+  return (
+    <ItemFilter onChange={filterChangeHandler} />
+  )
 }
-//Change DUMMY_DATA to loadedItems once fetch method is figured out
+
+//Change DUMMY_DATA to itemsToShow once fetch method is figured out
+
 export default ItemsListPage;
