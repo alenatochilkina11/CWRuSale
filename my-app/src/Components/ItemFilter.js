@@ -1,13 +1,10 @@
 import classes from "./ItemFilter.module.css";
-function ItemFilter() {
-  const filterChangeHandler = (event) => {
-    console.log(event.target.value);
-  };
+function ItemFilter(props) {
   return (
     <div className={classes.itemsfilter}>
       <div className={classes.itemsfilter__control}>
         <label>Filter by Category</label>
-        <select onChange={filterChangeHandler}>
+        <select onChange={(event) => props.onChange(event.target.value)}>
           <option value="All">All</option>
           <option value="Textbook">Textbook</option>
           <option value="Academic">Academic</option>
