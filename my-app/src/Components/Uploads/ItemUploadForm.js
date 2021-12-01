@@ -9,7 +9,6 @@ function ItemUploadForm(props) {
   const form = document.getElementById("upload-form");
 
   const btnHandler = () => {
-      // console.log("hello");
       if (form != null && form.reportValidity()) {
         setModalIsOpen(true);
       }
