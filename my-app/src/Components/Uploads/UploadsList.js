@@ -13,6 +13,9 @@ function UploadsList(props) {
           title={item.itemTitle}
           description={item.itemDescripton}
           price={item.itemPrice}
+          name={item.name}
+          email={item.caseID}
+          phone={item.phone}
         />
       ))}
     </ul>
