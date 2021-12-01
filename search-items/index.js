@@ -14,8 +14,13 @@ module.exports = async function (context, req) {
   let requestedItemCategory = req.query.itemCategory
 
   //let items = await returnItems();
+  let matchedItems
+  if (requestedItemCategory == "All"){
+    matchedItems = await getAll();
 
-  let matchedItems = await searchItems(requestedItemCategory);
+  }else {
+    matchedItems = await searchItems(requestedItemCategory);
+  }
   var jsonArray = JSON.stringify(matchedItems)
 
   const responseMessage = `Number of Matches: ${matchedItems.length}. Matches held in "matchedItems"`
@@ -30,15 +35,13 @@ module.exports = async function (context, req) {
 
 async function searchItems(category) { // param category
   const { endpoint, key, databaseId, containerId } = config;
-
   const client = new CosmosClient({ endpoint, key });
-
   const database = client.database(databaseId);
   const container = database.container(containerId);
 
-  // query to return all items
+  // query to return all items with matching category
   const querySpec = {
-    query: `SELECT * from c WHERE c.itemCategory = "${category}"` // WHERE itemInfo[2] = category //
+    query: `SELECT * from c WHERE c.itemCategory = "${category}"`
   };
 
   // read all items in the Items container
@@ -46,6 +49,25 @@ async function searchItems(category) { // param category
     .query(querySpec)
     .fetchAll();
 
+  return items;
+}
+
+// return all items
+async function getAll(){
+  const { endpoint, key, databaseId, containerId } = config;
+  const client = new CosmosClient({ endpoint, key });
+  const database = client.database(databaseId);
+  const container = database.container(containerId);
+
+  // query to return all items
+  const querySpec = {
+    query: `SELECT * from c`
+  };
+
+  // read all items in the Items container
+  const { resources: items } = await container.items
+    .query(querySpec)
+    .fetchAll();
 
   return items;
 }
