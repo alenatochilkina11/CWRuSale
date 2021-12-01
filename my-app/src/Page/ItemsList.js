@@ -32,23 +32,35 @@ const DUMMY_DATA = [
 ];
 
 function ItemsListPage(props) {
-
   const [filteredCategory, setFilteredCategory] = useState("All");
   const filterChangeHandler = (selectedCategory) => {
     setFilteredCategory(selectedCategory);
   };
+  const [itemsToShow, setItemsToShow] = useState("");
 
-  // let itemsToShow; --> Array that will be displayed
+  console.log("Current Category: " + filteredCategory);
 
-  // if(filteredCategory != "All") {
-  //   const res = fetch(
-  //     "https://cwru-sale.azurewebsites.net/api/search-items?itemCategory=" + filteredCategory,
-  //     { method: "GET" }
-  //   );
-  //   itemsToShow = res.body;
-  // } else {
-  //   itemsToShow = ??? --> need a function that returns all elements 
-  // };
+  const  getArray = async () => {
+    try {
+      if (filteredCategory !== "All") {
+        const res = await fetch(
+          "https://cwru-sale.azurewebsites.net/api/search-items?itemCategory=" +
+            filteredCategory,
+          { method: "GET" }
+        );
+        const arr = await res.json()
+        setItemsToShow(arr);
+      } else {
+        itemsToShow = DUMMY_DATA;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    console.log("hey")
+    return itemsToShow
+  }
+  console.log(itemsToShow)
+
 
   return (
     <section>
@@ -56,7 +68,7 @@ function ItemsListPage(props) {
       <div>
         <ItemFilter onChange={filterChangeHandler} />
       </div>
-      <UploadsList filter={filteredCategory} uploads={DUMMY_DATA} />
+      <UploadsList filter={filteredCategory} uploads={getArray} />
     </section>
   );
 }
