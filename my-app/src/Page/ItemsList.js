@@ -59,14 +59,17 @@ function ItemsListPage(props) {
   if (itemsToShow.length != 0)
     return (
       <section>
-        <h1>All Items</h1>
+        <h1>Items</h1>
         <ItemFilter onChange={filterChangeHandler} />
         <UploadsList filter={filteredCategory} uploads={itemsToShow} />
       </section>
     );
   
   return (
+    <section>
+    <h1>Items</h1>
     <ItemFilter onChange={filterChangeHandler} />
+    </section>
   )
 }
 
