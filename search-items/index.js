@@ -16,10 +16,12 @@ module.exports = async function (context, req) {
   let matchedItems
 
   // if category is selected, get items in it 
-  if (requestedItemCategory == "All" || requestedItemCategory == "Select"){
+  if (requestedItemCategory == "All"){
     matchedItems = await getAll();
-
-  }else {
+  } else if (requestedItemCategory == "Select"){
+    matchedItems = [];
+  }
+  else {
     matchedItems = await searchItems(requestedItemCategory);
   }
 
