@@ -19,6 +19,7 @@ function ItemFilter(props) {
           <option value="Bathroom">Bathroom</option>
           <option value="Kitchen">Kitchen</option>
           <option value="Technology">Technology</option>
+          <option value="Living Room">Living Room</option>
         </select>
       </div>
     </div>
