@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import classes from "./MainNavigationBar.module.css";
 
+//A UI component to display the navigation bar
 function MainNavigationBar() {
   return (
     <header className={classes.header}>

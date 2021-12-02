@@ -1,8 +1,9 @@
 import UploadItem from "./UploadItem";
 import classes from "./UploadsList.module.css";
 
+//The function that takes array output from database and maps ecah item to UploadItem 
+//to dynamically output the array on page
 function UploadsList(props) {
-
   return (
     <ul className={classes.list}>
       {props.uploads.map((item) => (
@@ -21,8 +22,5 @@ function UploadsList(props) {
     </ul>
   );
 }
-
-
-
 
 export default UploadsList;
