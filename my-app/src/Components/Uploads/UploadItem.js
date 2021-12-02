@@ -1,22 +1,26 @@
 import { useState } from "react";
 import classes from "./UploadItem.module.css";
 import Card from "../Elems/Card";
-import Modal from '../Elems/Modal';
-import Backdrop from '../Elems/Backdrop';
+import Modal from "../Elems/Modal";
+import Backdrop from "../Elems/Backdrop";
 
+//Creates a card with item for sale
 function UploadItem(props) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
+  //Handles "Get Info" button
   const btnHandler = () => {
-      setModalIsOpen(true);
+    setModalIsOpen(true);
   };
 
   function closeModalHandler() {
     setModalIsOpen(false);
   }
 
-  const text = 
-  "Contact Info-- \n Name: " + props.name +" / \n Case ID: "+ props.email +" / \n Phone: " + props.phone
+  //Text that should appear once the button is clicked and modal opens.
+  const text = "Name: " + props.name;
+  const text1 = "Case ID: " + props.email;
+  const text2 = "Phone: " + props.phone;
 
   return (
     <li className={classes.item}>
@@ -34,7 +38,13 @@ function UploadItem(props) {
         </div>
         <div>
           {modalIsOpen && (
-            <Modal text={text} onCancel={closeModalHandler} />
+            <Modal
+              header="Contact Info:"
+              text={text}
+              text1={text1}
+              text2={text2}
+              onCancel={closeModalHandler}
+            />
           )}
           {modalIsOpen && <Backdrop onClick={closeModalHandler} />}
         </div>

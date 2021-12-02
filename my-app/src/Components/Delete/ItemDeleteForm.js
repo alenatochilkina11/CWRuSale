@@ -4,25 +4,31 @@ import Card from "../Elems/Card";
 import Modal from "../Elems/Modal";
 import Backdrop from "../Elems/Backdrop";
 
+//A form to delerel items and requests from database
 function ItemDeleteForm(props) {
   const form = document.getElementById("delete-form");
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
+  //checks for form to be valid before modal is opened
   const btnHandler = () => {
     if (form != null && form.reportValidity()) {
       setModalIsOpen(true);
     }
   };
+
   function closeModalHandler() {
     setModalIsOpen(false);
   }
 
+  //Form item
   const [enteredID, setEnteredID] = useState("");
 
+  //Handler to read in form items
   const idChangeHandler = (event) => {
     setEnteredID(event.target.value);
   };
 
+  //Handles submit of the form
   function submitHandler(event) {
     event.preventDefault();
 
@@ -30,9 +36,10 @@ function ItemDeleteForm(props) {
       id: enteredID
     };
 
-    console.log(itemData);
+    //Used to post data to the database
     props.onDeleteItem(itemData);
 
+    //Sets form elements to empty
     setEnteredID("");
   }
   return (

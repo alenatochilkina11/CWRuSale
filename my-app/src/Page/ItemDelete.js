@@ -1,6 +1,7 @@
 import ItemDeleteForm from "../Components/Delete/ItemDeleteForm";
 import { useState } from "react";
 
+//Page for item deletion
 function ItemsDeletePage() {
   const [deleteText, setDeleteText] = useState("");
   const deleteItemHandler = async (itemData) => {
@@ -9,6 +10,7 @@ function ItemsDeletePage() {
         new URLSearchParams(itemData),
       { method: "GET" }
     );
+    //text is fetched from the function
     const text = await res.text();
     setDeleteText(text);
   };

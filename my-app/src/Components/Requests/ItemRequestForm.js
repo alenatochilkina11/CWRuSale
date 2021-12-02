@@ -4,10 +4,12 @@ import Card from "../Elems/Card";
 import Modal from "../Elems/Modal";
 import Backdrop from "../Elems/Backdrop";
 
+//The form to request items
 function ItemRequestForm(props) {
   const form = document.getElementById("request_form");
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
+  //The handler makes dure that the form is correctly filled up before modal appears
   const btnHandler = () => {
     if (form != null && form.reportValidity()) {
       setModalIsOpen(true);
@@ -18,11 +20,13 @@ function ItemRequestForm(props) {
     setModalIsOpen(false);
   }
 
+  //Form elements
   const [enteredCategory, setEnteredCategory] = useState("");
   const [enteredName, setEnteredName] = useState("");
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredPhone, setEnteredPhone] = useState("");
 
+  //Form handlers - read in the entered data
   const categoryChangeHandler = (event) => {
     setEnteredCategory(event.target.value);
   };
@@ -36,6 +40,7 @@ function ItemRequestForm(props) {
     setEnteredPhone(event.target.value);
   };
 
+  //The hadler for form submission
   function submitHandler(event) {
     event.preventDefault();
 
@@ -46,9 +51,10 @@ function ItemRequestForm(props) {
       phoneNumber: enteredPhone,
     };
 
-    console.log(itemData);
+    //Used to post data from form to database
     props.onRequestItem(itemData);
 
+    //Sets form values to empty upon submission
     setEnteredCategory("");
     setEnteredName("");
     setEnteredEmail("");

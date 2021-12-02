@@ -4,20 +4,22 @@ import Card from "../Elems/Card";
 import Modal from "../Elems/Modal";
 import Backdrop from "../Elems/Backdrop";
 
+//The form to upload items to the databse
 function ItemUploadForm(props) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const form = document.getElementById("upload-form");
 
+  //The handles makes sure that the modal is not opened untill the form is properly filled up
   const btnHandler = () => {
-      if (form != null && form.reportValidity()) {
-        setModalIsOpen(true);
-      }
+    if (form != null && form.reportValidity()) {
+      setModalIsOpen(true);
+    }
   };
-
   function closeModalHandler() {
     setModalIsOpen(false);
   }
 
+  //Elements entered into the form
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredImage, setEnteredImage] = useState("");
   const [enteredDescription, setEnteredDescription] = useState("");
@@ -27,6 +29,7 @@ function ItemUploadForm(props) {
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredPhone, setEnteredPhone] = useState("");
 
+  //Handlers to read in the values
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
   };
@@ -52,6 +55,7 @@ function ItemUploadForm(props) {
     setEnteredPhone(event.target.value);
   };
 
+  //Handler for item submission
   const submitHandler = (event) => {
     event.preventDefault();
 
@@ -66,8 +70,10 @@ function ItemUploadForm(props) {
       phone: enteredPhone,
     };
 
+    //Funtion used to post data into the database
     props.onUploadItem(itemData);
 
+    //Sets the form to empty once it is submitted
     setEnteredTitle("");
     setEnteredImage("");
     setEnteredDescription("");
@@ -101,7 +107,12 @@ function ItemUploadForm(props) {
             value={enteredImage}
             onChange={imageChangeHandler}
           />
-          <small><a href ="https://postimages.org/" target="_blank"> Convert your image to URL</a></small>
+          <small>
+            <a href="https://postimages.org/" target="_blank">
+              {" "}
+              Convert your image to URL
+            </a>
+          </small>
         </div>
         <div className={classes.control} data-testid="uploadDescription">
           <label htmlFor="description">Description</label>

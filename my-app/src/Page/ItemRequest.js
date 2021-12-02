@@ -1,6 +1,7 @@
 import ItemRequestForm from "../Components/Requests/ItemRequestForm";
 import { useState } from "react";
 
+//Page to leave request for an item
 function ItemsRequestPage() {
   const [requestText, setRequestText] = useState("");
   const requestItemHandler = async (itemData) => {

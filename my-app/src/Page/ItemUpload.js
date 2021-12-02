@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ItemUploadForm from "../Components/Uploads/ItemUploadForm";
 
+//Upload Items page that displays the upload form and sends the read in form elements to the databse
 function ItemsUploadPage() {
   const [uploadText, setUploadText] = useState("");
 
@@ -10,7 +11,7 @@ function ItemsUploadPage() {
         new URLSearchParams(itemData),
       { method: "GET" }
     );
-
+    //The text that is returned upon form submission
     const text = await res.text();
     setUploadText(text);
   };
