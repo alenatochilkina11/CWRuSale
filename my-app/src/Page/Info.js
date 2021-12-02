@@ -4,7 +4,14 @@ function InfoPage() {
   return (
     <section>
       <Card>
+        {/* <img src="https://i.postimg.cc/NjjGYG8T/cwrusale-logo.png" alt="logo" width="200" height="200"/> */}
         <center>
+          <img
+            src="https://i.postimg.cc/NjjGYG8T/cwrusale-logo.png"
+            alt="logo"
+            width="150"
+            height="150"
+          />
           <h1> About CWRUSale </h1>
         </center>
         <p className={classes.p}>
@@ -26,8 +33,9 @@ function InfoPage() {
             </ul>
             <li>Delete a Listing</li>
             <li>
-              Only listings that fall into these six categories may be created:
-              Textbook, Academic, Bedroom, Bathroom, Kitchen, Technology.
+              Only listings that fall into these seven categories may be
+              created: Textbook, Academic, Bedroom, Bathroom, Kitchen,
+              Technology, Living Room.
             </li>
           </ul>
           <h2>Buyers</h2>
@@ -39,9 +47,13 @@ function InfoPage() {
           <br />
         </p>
       </Card>
-      <h1> User Agreement </h1>
-      <iframe src="https://drive.google.com/file/d/1Mg6UC0B5LssJRpe7BkZzVRweJjjQCpMU/preview" width="640" height="480" allow="autoplay"></iframe>
-
+      {/* <h1> User Agreement </h1>
+      <iframe
+        src="https://drive.google.com/file/d/1Mg6UC0B5LssJRpe7BkZzVRweJjjQCpMU/preview"
+        width="640"
+        height="480"
+        allow="autoplay"
+      ></iframe> */}
     </section>
   );
 }
