@@ -146,6 +146,7 @@ function ItemUploadForm(props) {
             <option value="Bathroom">Bathroom</option>
             <option value="Kitchen">Kitchen</option>
             <option value="Technology">Technology</option>
+            <option value="Living Room">Living Room</option>
           </select>
         </div>
         <div className={classes.control} data-testid="uploadSellerName">
@@ -182,6 +183,11 @@ function ItemUploadForm(props) {
           />
         </div>
         <div className={classes.actions}>
+          <small>
+            By Clicking Upload Item, you agree to CWRUSale's User Agreement
+          </small>
+          <br />
+          <br />
           <button onClick={btnHandler}>Upload Item</button>
         </div>
         <div>
