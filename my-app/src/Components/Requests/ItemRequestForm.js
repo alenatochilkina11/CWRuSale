@@ -111,6 +111,11 @@ function ItemRequestForm(props) {
           />
         </div>
         <div className={classes.actions}>
+          <small>
+            By Clicking Notify Me, you agree to CWRUSale's User Agreement
+          </small>
+          <br />
+          <br />
           <button onClick={btnHandler}>Notify Me!</button>
         </div>
         <div>
