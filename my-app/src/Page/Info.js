@@ -47,13 +47,13 @@ function InfoPage() {
           <br />
         </p>
       </Card>
-      {/* <h1> User Agreement </h1>
+      <h1> User Agreement </h1>
       <iframe
-        src="https://drive.google.com/file/d/1Mg6UC0B5LssJRpe7BkZzVRweJjjQCpMU/preview"
+        src="https://drive.google.com/file/d/1VJqLG3hI1eqmfuclIyWqSWDHKaS0S2UZ/preview"
         width="640"
         height="480"
         allow="autoplay"
-      ></iframe> */}
+      ></iframe>
     </section>
   );
 }
